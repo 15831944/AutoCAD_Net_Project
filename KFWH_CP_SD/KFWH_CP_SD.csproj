@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98CA02A2-E5C6-4717-BEA1-FD35E34C1FC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KFWH_CP_SD</RootNamespace>
+    <AssemblyName>KFWH_CP_SD</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AdWindows">
+      <HintPath>C:\ObjectARX 2015\inc\AdWindows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PaneInformation.cs" />
+    <Compile Include="PanelInformationSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PanelInformationSetup.Designer.cs">
+      <DependentUpon>PanelInformationSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelativeCmdCls.cs" />
+    <Compile Include="RelativeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StartUp\KFWH_CMD.csproj">
+      <Project>{4d58c4b3-7cb6-4174-9deb-bfd8279bb6ea}</Project>
+      <Name>KFWH_CMD</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PanelInformationSetup.resx">
+      <DependentUpon>PanelInformationSetup.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>Copy /y $(TargetPath) \\10.19.80.8\cnkfewhfls01\Users\sheng.nan\C#\$(TargetFileName)
+Copy /y $(TargetPath) D:\CsharpPulgin\$(TargetFileName)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{341D4166-13F6-4FF9-AC18-544AEC3C7370}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KFWH_CP_SF</RootNamespace>
+    <AssemblyName>KFWH_CP_SF</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AcCoreMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcCoreMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcDbMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcDbMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="AcMgd">
+      <HintPath>C:\ObjectARX 2015\inc\AcMgd.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Excel">
+      <HintPath>..\..\..\编程技术资料\NuGet3rdLibiry\Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BendingTemplateNesting.cs" />
+    <Compile Include="FrmExportOutData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmExportOutData.Designer.cs">
+      <DependentUpon>FrmExportOutData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNestixPartsListExportOutcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNestixPartsListExportOutcs.Designer.cs">
+      <DependentUpon>FrmNestixPartsListExportOutcs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Linq2AutoCAD.cs" />
+    <Compile Include="PolylineTools.cs" />
+    <Compile Include="SteelFittingUtility.cs" />
+    <Compile Include="MyUtility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutoCAD_Net_Project\KFWH_CP_MaterialTakeOff.csproj">
+      <Project>{d3d96bcd-c631-4700-a9ba-fd4217d9b4a2}</Project>
+      <Name>KFWH_CP_MaterialTakeOff</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\StartUp\KFWH_CMD.csproj">
+      <Project>{4D58C4B3-7CB6-4174-9DEB-BFD8279BB6EA}</Project>
+      <Name>KFWH_CMD</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmExportOutData.resx">
+      <DependentUpon>FrmExportOutData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNestixPartsListExportOutcs.resx">
+      <DependentUpon>FrmNestixPartsListExportOutcs.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>Copy /y $(TargetPath) \\10.19.80.8\cnkfewhfls01\Users\sheng.nan\C#\$(TargetFileName)</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
